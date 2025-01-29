@@ -1,6 +1,13 @@
 * {
     box-sizing: border-box;
 }
+p {
+    font-family: Raleway;
+}
+h1 {
+    font-family: Raleway;
+    font-weight: 700;
+}
 body { 
     margin:0;
     padding: 0;
@@ -10,7 +17,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #111;
 }
 li {
     float: left;
@@ -19,16 +26,16 @@ li a {
     display: block;
     color: white;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Raleway;
     font-size: 2.5vh;
     text-decoration: none;
     padding-top: 1.25vh;
     padding-bottom: 1.25vh;
-    padding-left: 1vh;
-    padding-right: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 li a:hover {
-    background-color: #111;
+    background-color: #222;
 }
 .container {
     border:#111 solid 2px;
@@ -38,7 +45,7 @@ li a:hover {
     max-height: 5vh;
 }
 .pagecontent {
-    padding-top:16.5vh;
+    padding-top:10vh;
     padding-bottom: 0;
     height: 95vh;
     border:#db0505 2px solid;
@@ -46,7 +53,7 @@ li a:hover {
 .calculator {
     margin-left:10vw;
     width:40vw;
-    height:60vh;
+    height:70vh;
     float: left;
 }
 .calcinput {
@@ -54,12 +61,12 @@ li a:hover {
 }
 .routine {
     width:40vw;
-    height:30vh;
+    height:35vh;
     float: left;
 }
 .streak {
     width:40vw;
-    height:30vh;
+    height:35vh;
     float: left;
 }
 .containertitle {
@@ -67,7 +74,7 @@ li a:hover {
 }
 .tablescaler {
     width:38vw;
-    max-height:35%;
+    max-height:40%;
     overflow-y: auto;
 }
 table { 
