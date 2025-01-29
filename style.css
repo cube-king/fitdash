@@ -96,3 +96,21 @@ td {
 td p {
     font-size:1.7vh;
 }
+.graphcontainer {
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+    grid-template-rows:repeat(5, 1fr);
+    border:2px solid rgb(50, 90, 77);
+    height:70%;
+    width:50%;
+    margin-left: 0vw;
+    border-radius: 5px;
+}
+.dayredborder {
+    border:2px solid rgb(113, 255, 122);
+    border-radius: 5px;
+    margin: 5px;
+}
+.dayspacer {
+    border:2px solid transparent;
+}

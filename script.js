@@ -1,9 +1,31 @@
+let i = 0;
+let date = new Date();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
+let day = date.getDate();
+const daysInMonth = (year, month) => new Date(year,month,0).getDate()
 let gndr = "m";
 let unit = "metric";
 let bmr = 0;
 let weight = 0;
 let height = 0;
 let age = 0;
+function createDays() {
+    for (let step = 0; step < daysInMonth(year,month); step++) {
+        $('.graphcontainer').prepend(
+            '<div class="dayredborder day" data-daynum="'+step+'"></div>'
+        );
+    }
+}
+
+function shiftDays() {
+    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    for (let days = 0; days < 6 - firstDay; days++) {
+        $('.graphcontainer').prepend(
+            '<div class="dayspacer"></div>'
+        );
+    }    
+}
 $(".gendertoggle").on("click", function () {
     if (gndr == "m") {
         gndr = "f"
@@ -71,3 +93,5 @@ function calculateBMR() {
         $(".bmrtext").text("BMR: "+Math.round(bmr).toString()+" calories");
     }
 } 
+createDays()
+shiftDays()
