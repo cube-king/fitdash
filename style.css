@@ -49,6 +49,9 @@ li a:hover {
     height:60vh;
     float: left;
 }
+.calcinput {
+    width:30%;
+}
 .routine {
     width:40vw;
     height:30vh;
@@ -58,4 +61,31 @@ li a:hover {
     width:40vw;
     height:30vh;
     float: left;
+}
+.containertitle {
+    font-size:3vh;
+}
+.tablescaler {
+    width:38vw;
+    max-height:35%;
+    overflow-y: auto;
+}
+table { 
+    border-collapse: collapse;
+    width: 100%;
+    height:100%;
+}
+tr {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+td {
+    border-right: solid 1px #ddd; 
+    border-left: solid 1px #ddd;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
+}
+td p {
+    font-size:1.7vh;
 }

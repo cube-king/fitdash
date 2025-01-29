@@ -7,6 +7,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     </head>
     <body>
         <ul class="navbar">
@@ -16,7 +20,41 @@
         </ul>
         <div class="pagecontent">
             <div class="calculator container">
-                <h1 class="containertitle">Calorie calculator</h1>
+                <h1 class="containertitle">Calorie requirement and BMR calculator</h1>
+                <button class="gendertoggle">Male</button><button class="unittoggle">Metric</button><p>(important for equations)</p>
+                <input type="number" class="ageinput calcinput" placeholder="Age in years">
+                <input type="number" class="heightinput calcinput" placeholder="Height in cm">
+                <input type="number" class="weightinput calcinput" placeholder="Weight in kg">
+                <p class="bmrtext">BMR: (placeholder)</p>
+                <div class="tablescaler">
+                    <table>
+                        <tr>
+                            <td><p>Sedentary</p></td>
+                            <td><p>Almost no physical activity, may be considered the most unhealthy of these</p></td>
+                            <td id="sedentarycell">1.2 times BMR</td>
+                        </tr>
+                        <tr>
+                            <td><p>Lightly Active</p></td>
+                            <td><p>A few hours of light heartrate elevation / light exercise 1-2 times a week</p></td>
+                            <td id="liactivecell">1.375 times BMR</td>
+                        </tr>
+                        <tr>
+                            <td><p>Moderately Active</p></td>
+                            <td><p>Moderate heartrate elevation / exercise 3-5 days a week</p></td>
+                            <td id="modactivecell">1.55 times BMR</td>
+                        </tr>
+                        <tr>
+                            <td><p>Very Active</p></td>
+                            <td><p>Hard / intense heartrate elevation 6-7 days a week</p></td>
+                            <td id="veryactivecell">1.725 times BMR</td>
+                        </tr>
+                        <tr>
+                            <td><p>Extremely Active</p></td>
+                            <td><p>Professional level training, working out 1-2 times a day or an extremely physical job</p></td>
+                            <td id="exactivecell">1.9 times BMR</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="routine container">
                 <h1 class="containertitle">Routine generator</h1>
