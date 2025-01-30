@@ -184,6 +184,17 @@ $(document).ready(function() {
     updateCompletedDays();
     console.log(localStorage.getItem("unit"));
     $(".routinemaker").addClass('routinemaker-transition');
+    $('#dayInput').on('input', function() {
+        let value = parseInt($(this).val());
+        let min = parseInt($(this).attr('min'));
+        let max = parseInt($(this).attr('max'));
+    
+        if (value < min) {
+          $(this).val(min);
+        } else if (value > max) {
+          $(this).val(max);
+        }
+      });
 });
 
 let scrollindex = 0;
