@@ -13,8 +13,87 @@ let age = 0;
 let vh = $(window).height() / 100;
 let containerHeight;
 
+Array.prototype.random = function () {
+    return this[Math.floor((Math.random()*this.length))];
+}
+
+const pushExercises = [
+    "Bench Press",
+    "Overhead Press",
+    "Dumbbell Flyes",
+    "Tricep Dips",
+    "Push-Ups",
+    "Incline Bench Press",
+    "Chest Press Machine",
+    "Tricep Pushdowns",
+    "Arnold Press",
+    "Lateral Raises",
+    "Front Raises",
+    "Pec Deck Machine"
+];
+
+const pullExercises = [
+    "Pull-Ups",
+    "Deadlifts",
+    "Barbell Rows",
+    "Bicep Curls",
+    "Face Pulls",
+    "Lat Pulldowns",
+    "Seated Rows",
+    "Hammer Curls",
+    "Bent Over Rows",
+    "T-Bar Rows",
+    "Reverse Flyes",
+    "Shrugs"
+];
+
+const legExercises = [
+    "Squats",
+    "Lunges",
+    "Leg Press",
+    "Leg Curls",
+    "Calf Raises",
+    "Leg Extensions",
+    "Romanian Deadlifts",
+    "Glute Bridges",
+    "Hip Thrusts",
+    "Bulgarian Split Squats",
+    "Step-Ups",
+    "Goblet Squats"
+];
+
+const upperExercises = [
+    "Bench Press",
+    "Pull-Ups",
+    "Overhead Press",
+    "Barbell Rows",
+    "Bicep Curls",
+    "Incline Bench Press",
+    "Lat Pulldowns",
+    "Seated Rows",
+    "Tricep Dips",
+    "Arnold Press",
+    "Lateral Raises",
+    "Face Pulls"
+];
+
+const lowerExercises = [
+    "Squats",
+    "Deadlifts",
+    "Leg Press",
+    "Leg Curls",
+    "Calf Raises",
+    "Leg Extensions",
+    "Romanian Deadlifts",
+    "Glute Bridges",
+    "Hip Thrusts",
+    "Bulgarian Split Squats",
+    "Step-Ups",
+    "Goblet Squats"
+];
+
 function createDays() {
-    for (let step = 1; step < daysInMonth(year,month); step++) {
+    for (let step = 1; step <= daysInMonth(year, month); step++) { 
         $('.graphcontainer').append(
             '<div class="dayredborder day" data-monthnum="'+month+'" data-daynum="'+step+'"></div>'
         );
@@ -31,12 +110,12 @@ function shiftDays() {
 function updateCompletedDays() {
     $(".day").each(function() {
         if ($(this).data("monthnum") == month) {
-            if (localStorage.getItem(month+"/"+$(this).data("daynum"))) {
-                this.style.backgroundColor = "rgb(0, 117, 25)"
-                console.log("found")
+            if (localStorage.getItem(month+"/"+$(this).data("daynum")) && $(this).data("daynum") <= day) { 
+                this.style.backgroundColor = "rgb(10,54,157)";
+                console.log("found");
             }
         }
-    })
+    });
 }
 $(".gendertoggle").on("click", function () {
     if (gndr === "m") {
@@ -173,17 +252,19 @@ function calculateBMR() {
         $(".bmrtext").text("BMR: 0 calories");
     }
 }
-$(document).ready(function() {
-    containerHeight = $('.stepcontainer').height();
-    createDays();
-    shiftDays();
-    loadSavedVals();
-    calculateBMR();
-    localStorage.setItem(month+"/"+day,1);
-    console.log(month+"/"+day);
-    updateCompletedDays();
-    console.log(localStorage.getItem("unit"));
-    $(".routinemaker").addClass('routinemaker-transition');
+function routineGenerationSetup() {
+    $("#strengthchoice").on("click", function() {
+        localStorage.setItem("goal","strength");
+        $(".reprange").text("1-5 reps");
+    })
+    $("#sizechoice").on("click", function() {
+        localStorage.setItem("goal","size");
+        $(".reprange").text("8-12 reps");
+    })
+    $("#endurancechoice").on("click", function() {
+        localStorage.setItem("goal","endurance");
+        $(".reprange").text("12-20 reps");
+    })
     $('#dayInput').on('input', function() {
         let value = parseInt($(this).val());
         let min = parseInt($(this).attr('min'));
@@ -194,7 +275,49 @@ $(document).ready(function() {
         } else if (value > max) {
           $(this).val(max);
         }
+        if ($(this).val() == 3) {
+            $(".splitresults").text("Your split will be a Push Pull Legs split, with the following schedule:")
+            $(".splitschedule").text("Day 1: Push, Day 2: Rest, Day 3: Pull, Day 4: Rest, Day 5, Legs, Day 6: Rest, Day 7: Rest")
+            $(".exercises").html("Push: "+pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random() 
+            + "<br>Pull: "+pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random() 
+            + "<br>Legs: "+legExercises.random()+", " + legExercises.random()+", " + legExercises.random()+", " + legExercises.random());
+        }
+        if ($(this).val() == 4) {
+            $(".splitresults").text("Your split will be a Upper Lower split, with the following schedule:")
+            $(".splitschedule").text("Day 1: Upper, Day 2: Lower, Day 3: Rest, Day 4: Upper, Day 5, Lower, Day 6: Rest, Day 7: Rest")
+            $(".exercises").html("<br>Upper: "+upperExercises.random()+", " + upperExercises.random()+", " + upperExercises.random()+", " + upperExercises.random()
+            + "<br>Lower: "+lowerExercises.random()+", " + lowerExercises.random()+", " + lowerExercises.random()+", " + lowerExercises.random());
+        }
+        if ($(this).val() == 5) {
+            $(".splitresults").text("Your split will be a PPL/UL split, with the following schedule:")
+            $(".splitschedule").text("Day 1: Push, Day 2: Pull, Day 3: Legs, Day 4: Rest, Day 5, Upper, Day 6: Lower, Day 7: Rest")
+            $(".exercises").html("Push: "+pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random() 
+            + "<br>Pull: "+pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random() 
+            + "<br>Legs: "+legExercises.random()+", " + legExercises.random()+", " + legExercises.random()+", " + legExercises.random()
+            + "<br>Upper: "+upperExercises.random()+", " + upperExercises.random()+", " + upperExercises.random()+", " + upperExercises.random()
+            + "<br>Lower: "+lowerExercises.random()+", " + lowerExercises.random()+", " + lowerExercises.random()+", " + lowerExercises.random());
+        }
+        if ($(this).val() == 6) {
+            $(".splitresults").text("Your split will be a Push Pull Legs split, with the following schedule:")
+            $(".splitschedule").text("Day 1: Push, Day 2: Pull, Day 3: Legs, Day 4: Push, Day 5, Pull, Day 6: Legs, Day 7: Rest")
+            $(".exercises").html("Push: "+pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random()+", " + pushExercises.random() 
+            + "<br>Pull: "+pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random()+", " + pullExercises.random() 
+            + "<br>Legs: "+legExercises.random()+", " + legExercises.random()+", " + legExercises.random()+", " + legExercises.random());
+        }
       });
+}
+$(document).ready(function() {
+    containerHeight = $('.stepcontainer').height();
+    createDays();
+    shiftDays();
+    routineGenerationSetup();
+    loadSavedVals();
+    calculateBMR();
+    localStorage.setItem(month+"/"+day,1);
+    console.log(month+"/"+day);
+    updateCompletedDays();
+    console.log(localStorage.getItem("unit"));
+    $(".routinemaker").addClass('routinemaker-transition');
 });
 
 let scrollindex = 0;
