@@ -92,6 +92,7 @@ td {
     overflow: hidden; 
     text-overflow: ellipsis; 
     word-wrap: break-word;
+    font-family: Raleway;
 }
 td p {
     font-size:1.7vh;
@@ -113,4 +114,29 @@ td p {
 }
 .dayspacer {
     border:2px solid transparent;
+}
+.routinemakercontainer {
+    border: #db0505 solid 2px;
+    max-width:97%;
+    height:72%; 
+    overflow:hidden;
+}  
+.routinemaker {
+    width:100%;
+    height:1000%;
+    border:#222 2px solid;
+    transition: transform 2s;
+    transform: translateY(0);
+}
+.stepcontainer {
+    height: calc(35vh * 0.72); 
+    margin: 0;
+}
+.routinemaker p { 
+    margin:0;
+    padding:0;
+}
+.nextbutton {
+    background-color: aqua;
+    bottom: 100px;
 }
