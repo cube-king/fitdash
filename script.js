@@ -308,6 +308,9 @@ function routineGenerationSetup() {
 }
 $(document).ready(function() {
     containerHeight = $('.stepcontainer').height();
+    $(window).on('resize', function(){
+        containerHeight = $('.stepcontainer').height();
+    });
     createDays();
     shiftDays();
     routineGenerationSetup();
